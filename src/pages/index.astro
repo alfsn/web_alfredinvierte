@@ -43,11 +43,20 @@ try {
       
       <div class="logos-grid">
         {partnerLogos.length > 0 ? (
-          partnerLogos.map((logo) => (
-            <div class="logo-item">
-              <img src={`/allies/${logo}`} alt="Aliado Estratégico" loading="lazy" />
-            </div>
-          ))
+          partnerLogos.map((logo) => {
+            const allyLinks = {
+              "Hallway-black.png": "https://www.hallway.com.ar",
+              "ib-logo-stacked.png": "https://www.interactivebrokers.com",
+              "inviu.png": "https://www.inviu.com.ar"
+            };
+            const link = allyLinks[logo as keyof typeof allyLinks] || "#"; // Fallback to '#' if link not found
+
+            return (
+              <a href={link} target="_blank" rel="noopener noreferrer" class="logo-item">
+                <img src={`/allies/${logo}`} alt="Aliado Estratégico" loading="lazy" />
+              </a>
+            );
+          })
         ) : (
           <p class="placeholder-text">Aliados estratégicos de primer nivel.</p>
         )}
@@ -350,7 +359,7 @@ try {
 </style>
 
 <script>
-  const logos = document.querySelectorAll('.logo-item');
+  const logos = document.querySelectorAll('a.logo-item');
 
   logos.forEach(logo => {
     logo.addEventListener('mouseenter', () => {
