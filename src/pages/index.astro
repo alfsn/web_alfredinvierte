@@ -245,13 +245,25 @@ try {
     height: 100px; /* Increased height */
     width: auto;
     object-fit: contain;
-    filter: grayscale(100%) opacity(0.8);
     opacity: 1;
-    transition: filter 0.3s, opacity 0.3s;
+    transition: transform 0.3s ease-in-out; /* Added transition for smooth effect */
   }
 
-  .logo-item img:hover {
-    filter: grayscale(0%) opacity(1);
+  .logo-item {
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    filter: grayscale(100%);
+  }
+
+  .logo-item:hover {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+  }
+
+  .logo-item.move-left {
+    transform: translateX(-40px);
+  }
+  .logo-item.move-right {
+    transform: translateX(40px);
   }
 
   .placeholder-text { color: rgba(255,255,255,0.5); font-style: italic; }
@@ -336,3 +348,33 @@ try {
     .form-wrapper { padding: 20px; }
   }
 </style>
+
+<script>
+  const logos = document.querySelectorAll('.logo-item');
+
+  logos.forEach(logo => {
+    logo.addEventListener('mouseenter', () => {
+      let prev = logo.previousElementSibling;
+      let next = logo.nextElementSibling;
+
+      if (prev) {
+        prev.classList.add('move-left');
+      }
+      if (next) {
+        next.classList.add('move-right');
+      }
+    });
+
+    logo.addEventListener('mouseleave', () => {
+      let prev = logo.previousElementSibling;
+      let next = logo.nextElementSibling;
+
+      if (prev) {
+        prev.classList.remove('move-left');
+      }
+      if (next) {
+        next.classList.remove('move-right');
+      }
+    });
+  });
+</script>
