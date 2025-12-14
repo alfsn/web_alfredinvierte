@@ -50,9 +50,11 @@ try {
               "inviu.png": "https://www.inviu.com.ar"
             };
             const link = allyLinks[logo as keyof typeof allyLinks] || "#"; // Fallback to '#' if link not found
+            const isHallway = (logo === "Hallway-black.png");
+            const logoClass = isHallway ? "logo-item hallway-logo" : "logo-item";
 
             return (
-              <a href={link} target="_blank" rel="noopener noreferrer" class="logo-item">
+              <a href={link} target="_blank" rel="noopener noreferrer" class={logoClass}>
                 <img src={`/allies/${logo}`} alt="Aliado Estratégico" loading="lazy" />
               </a>
             );
@@ -251,11 +253,14 @@ try {
   }
 
   .logo-item img {
-    height: 100px; /* Increased height */
+    height: 100px; /* Base height for logos */
     width: auto;
     object-fit: contain;
     opacity: 1;
-    transition: transform 0.3s ease-in-out; /* Added transition for smooth effect */
+  }
+  
+  .hallway-logo img {
+    height: 200px; /* 2x size for Hallway logo */
   }
 
   .logo-item {
