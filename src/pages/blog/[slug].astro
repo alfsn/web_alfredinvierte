@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+<Layout title={entry.data.title}>
+  <main class="post-page">
+    <div class="container">
+      <div class="post-header">
+        <h1>{entry.data.title}</h1>
+        <p class="publish-date">
+          Publicado el {entry.data.pubDate.toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </p>
+      </div>
+      <div class="post-content">
+        <Content />
+      </div>
+      <a href="/blog" class="back-link">&larr; Volver al Blog</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .post-page {
+    padding: 60px 0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .post-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .post-header h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    color: var(--black);
+  }
+  .publish-date {
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+  .post-content {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  .post-content h2, .post-content h3 {
+    color: var(--black);
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .post-content a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+  .back-link {
+    display: inline-block;
+    margin-top: 40px;
+    font-weight: bold;
+    color: var(--red);
+    text-decoration: none;
+  }
+</style>
