@@ -24,6 +24,7 @@ const colors = {
 		<meta name="description" content="Asesoramiento financiero profesional." />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/png" href="/graphics/tipo AI.png" />
 		<title>{title}</title>
 	</head>
 	<body>
@@ -44,6 +45,7 @@ const colors = {
 		<slot />
     <footer class="site-footer">
       <div class="container">
+        <img src="/graphics/tipo AI.png" alt="Alfredo Sampron Logo" class="footer-logo" />
         <p>&copy; {new Date().getFullYear()} Alfredo Sampron. Todos los derechos reservados.</p>
         <div class="social-links">
           <a href="#" target="_blank">Instagram</a>
@@ -142,6 +144,12 @@ const colors = {
     gap: 15px;
   }
   
+  .footer-logo {
+    height: 50px;
+    width: auto;
+    margin-bottom: 10px;
+  }
+
   .social-links a {
     color: var(--white);
     text-decoration: none;
