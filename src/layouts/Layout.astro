@@ -24,10 +24,36 @@ const colors = {
 		<meta name="description" content="Asesoramiento financiero profesional." />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/png" href="/graphics/tipo AI.png" />
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot /> </body>
+    <header class="site-header">
+      <div class="container">
+        <a href="/" class="logo">
+          <img src="/graphics/Imagotipo AI - Color(1).png" alt="Alfredo Sampron Imagotipo" />
+        </a>
+        <nav>
+          <a href="/">Inicio</a>
+          <a href="/about">Sobre Mí</a>
+          <a href="/blog">Blog</a>
+          <a href="/allies">Aliados</a>
+          <a href="/contact">Contacto</a>
+        </nav>
+      </div>
+    </header>
+		<slot />
+    <footer class="site-footer">
+      <div class="container">
+        <img src="/graphics/tipo AI.png" alt="Alfredo Sampron Logo" class="footer-logo" />
+        <p>&copy; {new Date().getFullYear()} Alfredo Sampron. Todos los derechos reservados.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/alfredinvierte" target="_blank">Instagram</a>
+          <a href="https://www.twitter.com/alfredinvierte" target="_blank">Twitter</a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
 
 <style is:global define:vars={{ ...colors }}>
@@ -54,5 +80,84 @@ const colors = {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* --- HEADER & NAVIGATION --- */
+  .site-header {
+    background: var(--white);
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 120px;
+    width: auto;
+  }
+
+  nav {
+    display: flex;
+    gap: 25px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  nav a:hover {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+  }
+
+  /* --- FOOTER --- */
+  .site-footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 30px 0;
+    text-align: center;
+    margin-top: auto;
+  }
+
+  .site-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .footer-logo {
+    height: 50px;
+    width: auto;
+    margin-bottom: 10px;
+  }
+
+  .social-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+  }
+
+  .social-links a:hover {
+    text-decoration: underline;
   }
 </style>

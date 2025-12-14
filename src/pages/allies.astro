@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const alliesDir = path.join(process.cwd(), 'public', 'allies');
+let partnerLogos: string[] = [];
+
+try {
+  if (fs.existsSync(alliesDir)) {
+    partnerLogos = fs.readdirSync(alliesDir).filter(file => file.endsWith('.png'));
+  }
+} catch (error) {
+  console.error("Error reading allies directory:", error);
+}
+---
+
+<Layout title="Nuestros Aliados | Asesoramiento Financiero">
+  <main class="allies-page">
+    <div class="container">
+      <div class="page-header">
+        <span class="subtitle">Nuestra Red de Confianza</span>
+        <h1>Aliados Estratégicos</h1>
+        <p>
+          Colaboramos con instituciones top del mercado para brindarle acceso a soluciones de inversión de largo plazo y una infraestructura de primer nivel.
+        </p>
+      </div>
+
+      <div class="allies-grid">
+        {partnerLogos.map(logo => (
+          <div class="ally-card">
+            <img src={`/allies/${logo}`} alt={`Logo de ${logo.replace('.png', '')}`} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .allies-page {
+    padding: 60px 0;
+    background-color: var(--white);
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .subtitle {
+    display: block;
+    color: var(--red);
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  h1 { font-size: 3rem; color: var(--black); }
+  
+  .page-header p {
+    max-width: 700px;
+    margin: 15px auto 0;
+    color: #555;
+    font-size: 1.1rem;
+  }
+
+  .allies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    align-items: center;
+  }
+
+  .ally-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+  }
+  
+  .ally-card img {
+    max-width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  .ally-card:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+  }
+</style>
