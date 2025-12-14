@@ -224,7 +224,7 @@ try {
 
   /* --- ALLIES SECTION --- */
   .allies {
-    background-color: var(--black);
+    background-color: #333; /* Lighter shade of black */
     color: var(--white);
     padding: 60px 0;
     text-align: center;
@@ -242,11 +242,12 @@ try {
   }
 
   .logo-item img {
-    height: 60px;
+    height: 100px; /* Increased height */
     width: auto;
     object-fit: contain;
     filter: grayscale(100%) opacity(0.8);
-    transition: filter 0.3s;
+    opacity: 1;
+    transition: filter 0.3s, opacity 0.3s;
   }
 
   .logo-item img:hover {
