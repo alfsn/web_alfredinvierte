@@ -23,6 +23,7 @@ try {
   <main class="hero">
     <div class="container">
       <div class="text-content">
+        <img src="/graphics/Elemento AI - Flecha(1).png" alt="Arrow" class="deco-arrow arrow-left" />
         <span class="subtitle">Estrategia & Patrimonio</span>
         <h1>El Futuro de sus Finanzas, <span class="highlight">Hoy.</span></h1>
         <p>
@@ -30,6 +31,7 @@ try {
           con una visión estratégica del mercado local e internacional.
         </p>
         <a href="#contacto" class="btn-primary">Agendar Consulta</a>
+        <img src="/graphics/Elemento AI - Flecha 2(1).png" alt="Arrow" class="deco-arrow arrow-right" />
       </div>
       <div class="image-content">
         <img src="/headshot.jpg" alt="Asesor Financiero" class="profile-pic" />
@@ -53,6 +55,22 @@ try {
         )}
       </div>
 
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div class="container">
+      <h2>Qué Dicen Nuestros Clientes</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="quote">“Gracias al equipo de AlfredInvierte por la seguridad de no estar dejando mis ahorros estancados y acompañarme en el proceso.”</p>
+          <span class="author">Bianca B. - Cientifica de datos</span>
+        </div>
+        <div class="testimonial-card">
+          <p class="quote">“El análisis de mercado que recibo es fundamental para tomar decisiones. Un servicio profesional y personalizado.”</p>
+          <span class="author">Pedro S. - Periodista</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -108,8 +126,28 @@ try {
     flex-wrap: wrap;
   }
 
-  .text-content { flex: 1; }
+  .text-content {
+    flex: 1;
+    position: relative;
+  }
   .image-content { flex: 1; display: flex; justify-content: center; }
+
+  .deco-arrow {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    opacity: 0.5;
+  }
+  .arrow-left {
+    top: -20px;
+    left: -40px;
+    transform: rotate(-15deg);
+  }
+  .arrow-right {
+    bottom: 0px;
+    right: -20px;
+    transform: rotate(15deg);
+  }
 
   h1 {
     font-size: 3.5rem;
@@ -151,6 +189,40 @@ try {
   }
   
   .btn-primary:hover { background-color: var(--black); }
+
+  /* --- TESTIMONIALS SECTION --- */
+  .testimonials {
+    background-color: var(--white);
+    padding: 80px 0;
+    text-align: center;
+  }
+  .testimonials h2 {
+    color: var(--black);
+    margin-bottom: 50px;
+  }
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: left;
+  }
+  .testimonial-card {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 5px solid var(--blue);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+  .quote {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .author {
+    font-weight: bold;
+    color: var(--black);
+  }
 
   /* --- ALLIES SECTION --- */
   .allies {
