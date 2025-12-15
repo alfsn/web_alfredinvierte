@@ -22,7 +22,7 @@ const colors = {
 <html lang="es-AR"> <head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Asesoramiento financiero profesional." />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/png" href="/graphics/tipo AI.png" />
 		<title>{title}</title>
@@ -33,13 +33,19 @@ const colors = {
         <a href="/" class="logo">
           <img src="/graphics/Imagotipo AI - Color(1).png" alt="Alfredo Sampron Imagotipo" />
         </a>
-        <nav>
-          <a href="/">Inicio</a>
-          <a href="/about">Sobre Mí</a>
-          <a href="/blog">Blog</a>
-          <a href="/allies">Aliados</a>
-          <a href="/contact">Contacto</a>
-        </nav>
+        <button class="hamburger" aria-label="Menu">
+          <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <div class="nav-links">
+          <nav>
+            <a href="/">Inicio</a>
+            <a href="/about">Sobre Mí</a>
+            <a href="/blog">Blog</a>
+            <a href="/allies">Aliados</a>
+            <a href="/contact">Contacto</a>
+          </nav>
+        </div>
       </div>
     </header>
 		<slot />
@@ -56,13 +62,36 @@ const colors = {
   </body>
 </html>
 
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const siteHeader = document.querySelector('.site-header');
+
+    hamburger.addEventListener('click', () => {
+      siteHeader.classList.toggle('nav-open');
+    });
+  });
+</script>
+
 <style is:global define:vars={{ ...colors }}>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   /* Global CSS Reset & Variables */
   :root {
     --font-title: 'Anton', sans-serif;
     --font-body: 'Montserrat', sans-serif;
   }
   
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
   html {
     background: var(--white);
     color: var(--black);
@@ -109,7 +138,7 @@ const colors = {
     width: auto;
   }
 
-  nav {
+  .nav-links nav {
     display: flex;
     gap: 25px;
   }
@@ -126,6 +155,27 @@ const colors = {
   nav a:hover {
     color: var(--blue);
     border-bottom-color: var(--blue);
+  }
+
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+  }
+
+  .hamburger .icon-close {
+    display: none;
+  }
+
+  .site-header.nav-open .hamburger .icon-menu {
+    display: none;
+  }
+
+  .site-header.nav-open .hamburger .icon-close {
+    display: block;
   }
 
   /* --- FOOTER --- */
@@ -159,5 +209,37 @@ const colors = {
 
   .social-links a:hover {
     text-decoration: underline;
+  }
+
+  /* --- MOBILE STYLES --- */
+  @media (max-width: 768px) {
+    .logo img {
+      height: 80px; /* Adjust logo height for smaller screens */
+    }
+
+    .hamburger {
+      display: block;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .site-header.nav-open .nav-links {
+      display: block;
+    }
+
+    .nav-links nav {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+    }
   }
 </style>

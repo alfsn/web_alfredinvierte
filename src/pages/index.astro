@@ -250,6 +250,7 @@ try {
     gap: 40px;
     flex-wrap: wrap;
     margin-top: 30px;
+    width: 100%;
   }
 
   .logo-item img {
@@ -273,12 +274,7 @@ try {
     filter: grayscale(0%);
   }
 
-  .logo-item.move-left {
-    transform: translateX(-40px);
-  }
-  .logo-item.move-right {
-    transform: translateX(40px);
-  }
+
 
   .placeholder-text { color: rgba(255,255,255,0.5); font-style: italic; }
 
@@ -361,41 +357,16 @@ try {
     .hero .container { flex-direction: column-reverse; text-align: center; }
     .form-wrapper { padding: 20px; }
     .allies {
-      width: 100vw;
       box-sizing: border-box;
+      padding-left: 10px;
+      padding-right: 10px;
     }
     .allies .container {
       padding: 0;
+      width: 100%;
+    }
+    .logos-grid {
+      gap: 20px;
     }
   }
 </style>
-
-<script>
-  const logos = document.querySelectorAll('a.logo-item');
-
-  logos.forEach(logo => {
-    logo.addEventListener('mouseenter', () => {
-      let prev = logo.previousElementSibling;
-      let next = logo.nextElementSibling;
-
-      if (prev) {
-        prev.classList.add('move-left');
-      }
-      if (next) {
-        next.classList.add('move-right');
-      }
-    });
-
-    logo.addEventListener('mouseleave', () => {
-      let prev = logo.previousElementSibling;
-      let next = logo.nextElementSibling;
-
-      if (prev) {
-        prev.classList.remove('move-left');
-      }
-      if (next) {
-        next.classList.remove('move-right');
-      }
-    });
-  });
-</script>
