@@ -22,7 +22,7 @@ const colors = {
 <html lang="es-AR"> <head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Asesoramiento financiero profesional." />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/png" href="/graphics/tipo AI.png" />
 		<title>{title}</title>
@@ -74,12 +74,24 @@ const colors = {
 </script>
 
 <style is:global define:vars={{ ...colors }}>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   /* Global CSS Reset & Variables */
   :root {
     --font-title: 'Anton', sans-serif;
     --font-body: 'Montserrat', sans-serif;
   }
   
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
   html {
     background: var(--white);
     color: var(--black);
