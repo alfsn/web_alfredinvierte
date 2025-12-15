@@ -273,12 +273,7 @@ try {
     filter: grayscale(0%);
   }
 
-  .logo-item.move-left {
-    transform: translateX(-40px);
-  }
-  .logo-item.move-right {
-    transform: translateX(40px);
-  }
+
 
   .placeholder-text { color: rgba(255,255,255,0.5); font-style: italic; }
 
@@ -369,33 +364,3 @@ try {
     }
   }
 </style>
-
-<script>
-  const logos = document.querySelectorAll('a.logo-item');
-
-  logos.forEach(logo => {
-    logo.addEventListener('mouseenter', () => {
-      let prev = logo.previousElementSibling;
-      let next = logo.nextElementSibling;
-
-      if (prev) {
-        prev.classList.add('move-left');
-      }
-      if (next) {
-        next.classList.add('move-right');
-      }
-    });
-
-    logo.addEventListener('mouseleave', () => {
-      let prev = logo.previousElementSibling;
-      let next = logo.nextElementSibling;
-
-      if (prev) {
-        prev.classList.remove('move-left');
-      }
-      if (next) {
-        next.classList.remove('move-right');
-      }
-    });
-  });
-</script>
