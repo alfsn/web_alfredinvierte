@@ -29,22 +29,34 @@ import Layout from '../layouts/Layout.astro';
 
         <section class="credentials">
           <h2>Credenciales y Sobreescolarización</h2>
-          <ul>
+          <ul class="credentials-list">
             <li>
-              <span class="credential-title">Agente Productor CNV</span>
-              <span class="institution">Comisión Nacional de Valores</span>
+              <div class="credential-text">
+                <span class="credential-title">Máster en Economia</span>
+                <span class="institution">Universidad de San Andrés</span>
+              </div>
+              <img src="/universities/UdeSA.png" alt="UdeSA" class="credential-logo" />
             </li>
             <li>
-              <span class="credential-title">Máster en Economia</span>
-              <span class="institution">Universidad de San Andrés</span>
+              <div class="credential-text">
+                <span class="credential-title">Máster en Ingeniería Matemática (en curso)</span>
+                <span class="institution">Universidad de Buenos Aires, FIUBA</span>
+              </div>
+              <img src="/universities/Logo-fiuba_big.png" alt="FIUBA" class="credential-logo" />
             </li>
             <li>
-              <span class="credential-title">Máster en Ingeniería Matemática (en curso)</span>
-              <span class="institution">Universidad de Buenos Aires, FIUBA</span>
+              <div class="credential-text">
+                <span class="credential-title">Agente Productor CNV</span>
+                <span class="institution">Comisión Nacional de Valores</span>
+              </div>
+              <img src="/universities/cnv.jpg" alt="CNV" class="credential-logo" />
             </li>
             <li>
-              <span class="credential-title">Lic. en Administración de Empresas y Lic. en Economía</span>
-              <span class="institution">Universidad Católica Argentina</span>
+              <div class="credential-text">
+                <span class="credential-title">Lic. en Administración de Empresas y Lic. en Economía</span>
+                <span class="institution">Universidad Católica Argentina</span>
+              </div>
+              <img src="/universities/Universidad_Católica_Argentina.png" alt="UCA" class="credential-logo" />
             </li>
           </ul>
         </section>
@@ -132,17 +144,23 @@ import Layout from '../layouts/Layout.astro';
     color: #555;
   }
 
-  .credentials ul {
+  .credentials-list {
     list-style: none;
     padding: 0;
   }
   
-  .credentials li {
+  .credentials-list li {
     background: #f9f9f9;
-    padding: 15px;
+    padding: 15px 70px 15px 15px; /* Increased right padding to make space for the absolutely positioned image */
     border-radius: 5px;
     margin-bottom: 10px;
     border-left: 3px solid var(--red);
+    position: relative; /* Needed for absolute positioning of the image */
+    min-height: 80px; /* Ensure li is tall enough even if text is short */
+  }
+  
+  .credential-text {
+    /* No flex-grow needed here anymore */
   }
   
   .credential-title {
@@ -154,6 +172,16 @@ import Layout from '../layouts/Layout.astro';
   .institution {
     font-style: italic;
     font-size: 0.9rem;
+  }
+  
+  .credential-logo {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px; /* Fixed width */
+    height: 80px; /* Fixed height */
+    object-fit: contain; /* Ensures the entire image is visible within the bounds, maintaining aspect ratio */
   }
   
   .call-to-action {
@@ -189,5 +217,17 @@ import Layout from '../layouts/Layout.astro';
       text-align: center;
     }
     h1 { font-size: 2.5rem; }
+    .credentials-list li {
+      padding-right: 15px; /* Reset right padding for smaller screens */
+      min-height: auto;
+    }
+    .credential-logo {
+      position: static; /* Revert to static position */
+      transform: none;
+      margin-top: 10px;
+      margin-left: 0;
+      display: block; /* Make it a block element to take full width if desired, or center it */
+      margin-inline: auto; /* Center image if display block */
+    }
   }
 </style>
