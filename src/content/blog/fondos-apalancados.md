@@ -10,7 +10,7 @@ En el presente estudio, repasaremos el proceso conocido como deterioro o beta de
 A tal propósito proponemos un proceso estocástico como índice benchmark. En segunda instancia, evaluamos los rendimientos de un fondo apalancado, basado en este benchmark.
 Luego, estimamos su deterioro y sugerimos la aproximación para su eliminación.
 
-## Armado del índice
+# Armado del índice
 
 ![Caminata aleatoria Gaussiana](/blog-images/apalancados/1.png)
 
