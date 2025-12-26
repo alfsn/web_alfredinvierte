@@ -1,0 +1,145 @@
+---
+---
+<style>
+  .investor-questionnaire {
+    background-color: #f9fafb;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 2rem auto;
+    border: 1px solid #e5e7eb;
+  }
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #111827;
+  }
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  legend {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    padding: 0;
+    color: #111827;
+  }
+  .radio-group label,
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+  .radio-group input,
+  .checkbox-group input {
+    margin-right: 0.5rem;
+  }
+  .submit-btn {
+    background-color: #374151;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+  }
+  .submit-btn:hover {
+    background-color: #1f2937;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+
+<div class="investor-questionnaire">
+  <form name="alfred-investor-profile" method="POST" data-netlify="true" action="/success" netlify-honeypot="bot-field">
+    <!-- Hidden input for Netlify form name -->
+    <input type="hidden" name="form-name" value="alfred-investor-profile" />
+    <!-- Hidden Subject Line -->
+    <input type="hidden" name="subject" value="New Alfred Invierte Lead" />
+    <!-- Honeypot Field -->
+    <p class="hidden">
+      <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+    </p>
+
+    <h2>Investor Profile Questionnaire</h2>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+
+    <fieldset class="form-group">
+      <legend>El mercado cae en un día un 5%, las noticias son muy desalentadoras. Vos...</legend>
+      <div class="radio-group">
+        <label><input type="radio" name="caracter" value="panic-sell" /> Entro en pánico y liquido todo.</label>
+        <label><input type="radio" name="caracter" value="panic-sell" /> Me preocuparía, posiblemente venda.</label>
+        <label><input type="radio" name="caracter" value="do-nothing" /> No hago nada.</label>
+        <label><input type="radio" name="caracter" value="buy-more" /> Compro más! </label>
+        <label><input type="radio" name="caracter" value="no-news" /> No me entero, no estoy al tanto de las noticias.</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <legend>Hoy estás ahorrando e invirtiendo: cuando esperás usar esos fondos?</legend>
+      <div class="radio-group">
+        <label><input type="radio" name="time-horizon" value="<1-year" /> &lt;1 año</label>
+        <label><input type="radio" name="time-horizon" value="2-5-years" /> 2-5 años</label>
+        <label><input type="radio" name="time-horizon" value="10+years" /> 10+ años</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <legend>¿Qué tan seguido chequeás tus inversiones?</legend>
+        <div class="radio-group">
+            <label><input type="radio" name="trading-frequency" value="daily" /> A diario</label>
+            <label><input type="radio" name="trading-frequency" value="weekly" /> Una vez por semana</label>
+            <label><input type="radio" name="trading-frequency" value="monthly" /> Una vez por mes</label>
+            <label><input type="radio" name="trading-frequency" value="quarterly" /> Menos de una vez por mes</label>
+        </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <legend>¿Con qué herramientas financieras ya contás?</legend>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="toolkit" value="emergency-fund" /> Fondo de Emergencia de 1 mes de gastos</label>
+        <label><input type="checkbox" name="toolkit" value="brokerage" /> Cuenta de Inversiones</label>
+        <label><input type="checkbox" name="toolkit" value="crypto" /> Crypto</label>
+        <label><input type="checkbox" name="toolkit" value="real-estate" /> Bienes Raíces</label>
+        <label><input type="checkbox" name="toolkit" value="mostly-cash" /> Solo uso efectivo</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <legend>¿Cómo administrás tu ingreso mensual?</legend>
+        <div class="radio-group">
+            <label><input type="radio" name="savings-habit" value="bills-then-save" /> Pago las boletas, gasto y luego ahorro el resto.</label>
+            <label><input type="radio" name="savings-habit" value="no-savings" /> No estoy con capacidad de ahorro.</label>
+            <label><input type="radio" name="savings-habit" value="save-first" /> Primero separo para el ahorro, luego los gastos</label>
+            <label><input type="radio" name="savings-habit" value="variable-income" /> Mi ingreso es muy variable.</label>
+        </div>
+    </fieldset>
+
+    <button type="submit" class="submit-btn">¡Quiero ver!</button>
+  </form>
+</div>
