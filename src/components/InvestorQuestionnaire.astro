@@ -92,8 +92,8 @@
     <fieldset class="form-group">
       <legend>El mercado cae en un día un 5%, las noticias son muy desalentadoras. Vos...</legend>
       <div class="radio-group">
-        <label><input type="radio" name="caracter" value="panic-sell" /> Entro en pánico y liquido todo.</label>
-        <label><input type="radio" name="caracter" value="panic-sell" /> Me preocuparía, posiblemente venda.</label>
+        <label><input type="radio" name="caracter" value="panic-sell" required /> Entro en pánico y liquido todo.</label>
+        <label><input type="radio" name="caracter" value="worry" /> Me preocuparía, posiblemente venda.</label>
         <label><input type="radio" name="caracter" value="do-nothing" /> No hago nada.</label>
         <label><input type="radio" name="caracter" value="buy-more" /> Compro más! </label>
         <label><input type="radio" name="caracter" value="no-news" /> No me entero, no estoy al tanto de las noticias.</label>
@@ -103,7 +103,7 @@
     <fieldset class="form-group">
       <legend>Hoy estás ahorrando e invirtiendo: cuando esperás usar esos fondos?</legend>
       <div class="radio-group">
-        <label><input type="radio" name="time-horizon" value="<1-year" /> &lt;1 año</label>
+        <label><input type="radio" name="time-horizon" value="<1-year" required /> &lt;1 año</label>
         <label><input type="radio" name="time-horizon" value="2-5-years" /> 2-5 años</label>
         <label><input type="radio" name="time-horizon" value="10+years" /> 10+ años</label>
       </div>
@@ -112,7 +112,7 @@
     <fieldset class="form-group">
         <legend>¿Qué tan seguido chequeás tus inversiones?</legend>
         <div class="radio-group">
-            <label><input type="radio" name="trading-frequency" value="daily" /> A diario</label>
+            <label><input type="radio" name="trading-frequency" value="daily" required /> A diario</label>
             <label><input type="radio" name="trading-frequency" value="weekly" /> Una vez por semana</label>
             <label><input type="radio" name="trading-frequency" value="monthly" /> Una vez por mes</label>
             <label><input type="radio" name="trading-frequency" value="quarterly" /> Menos de una vez por mes</label>
@@ -122,18 +122,18 @@
     <fieldset class="form-group">
       <legend>¿Con qué herramientas financieras ya contás?</legend>
       <div class="checkbox-group">
-        <label><input type="checkbox" name="toolkit" value="emergency-fund" /> Fondo de Emergencia de 1 mes de gastos</label>
-        <label><input type="checkbox" name="toolkit" value="brokerage" /> Cuenta de Inversiones</label>
-        <label><input type="checkbox" name="toolkit" value="crypto" /> Crypto</label>
-        <label><input type="checkbox" name="toolkit" value="real-estate" /> Bienes Raíces</label>
-        <label><input type="checkbox" name="toolkit" value="mostly-cash" /> Solo uso efectivo</label>
+        <label><input type="checkbox" name="toolkit[]" value="emergency-fund" /> Fondo de Emergencia de 1 mes de gastos</label>
+        <label><input type="checkbox" name="toolkit[]" value="brokerage" /> Cuenta de Inversiones</label>
+        <label><input type="checkbox" name="toolkit[]" value="crypto" /> Crypto</label>
+        <label><input type="checkbox" name="toolkit[]" value="real-estate" /> Bienes Raíces</label>
+        <label><input type="checkbox" name="toolkit[]" value="mostly-cash" /> Solo uso efectivo</label>
       </div>
     </fieldset>
 
     <fieldset class="form-group">
         <legend>¿Cómo administrás tu ingreso mensual?</legend>
         <div class="radio-group">
-            <label><input type="radio" name="savings-habit" value="bills-then-save" /> Pago las boletas, gasto y luego ahorro el resto.</label>
+            <label><input type="radio" name="savings-habit" value="bills-then-save" required /> Pago las boletas, gasto y luego ahorro el resto.</label>
             <label><input type="radio" name="savings-habit" value="no-savings" /> No estoy con capacidad de ahorro.</label>
             <label><input type="radio" name="savings-habit" value="save-first" /> Primero separo para el ahorro, luego los gastos</label>
             <label><input type="radio" name="savings-habit" value="variable-income" /> Mi ingreso es muy variable.</label>
